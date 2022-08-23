@@ -5,7 +5,7 @@
   let expanded = false
 
   navigating.subscribe(() => {
-	expanded = false
+    expanded = false
   })
 </script>
 
@@ -77,21 +77,21 @@
         <li class="mt-5 md:mt-0">
           <a
             rel="prefetch"
-            href="/about"
-            class="text-white rounded md:border-0 md:pl-0"
-            aria-current={$page.url.pathname === '/about' ? 'page' : false}
+            href="/"
+            class="text-white md:pl-0"
+            aria-current={$page.url.pathname === '/' ? 'page' : false}
           >
-            About
+            Home
           </a>
         </li>
         <li class="mt-5 md:mt-0">
           <a
             rel="prefetch"
-            href="/services"
-            class="text-white md:pl-0"
-            aria-current={$page.url.pathname === '/services' ? 'page' : false}
+            href="/about"
+            class="text-white rounded md:border-0 md:pl-0"
+            aria-current={$page.url.pathname === '/about' ? 'page' : false}
           >
-            Services
+            About
           </a>
         </li>
         <li class="mt-5 md:mt-0">
@@ -116,12 +116,10 @@
             Claim a listing
           </a>
         </li>
-        <li class="mt-5 md:mt-0 py-1 px-4 bg-white duration-100 hover:bg-blue-200 rounded-full">
-          <a
-            rel="prefetch"
-            href="/report"
-            class="text-slate-700 md:pl-0"
-          >
+        <li
+          class="mt-5 md:mt-0 py-1 px-4 bg-white duration-100 hover:bg-blue-200 rounded-full"
+        >
+          <a rel="prefetch" href="/report" class="text-slate-700 md:pl-0">
             Report a Price
           </a>
         </li>
