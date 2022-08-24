@@ -9,7 +9,7 @@
   })
 </script>
 
-<nav class="bg-blue-800 border-gray-200 px-2 sm:px-4">
+<nav class="bg-blue-600 border-gray-200 px-2 sm:px-4">
   <div class="container flex flex-wrap justify-between items-center mx-auto">
     <!-- Logo -->
     <a rel="prefetch" href="/" class="flex items-center">
@@ -23,7 +23,7 @@
     <!-- Open Hamburger Button -->
     <button
       type="button"
-      class="p-2 ml-3 text-sm rounded-lg md:hidden hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-gray-200"
+      class="p-2 ml-3 text-sm rounded-lg md:hidden hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-gray-200"
       aria-controls="navbar-default"
       aria-expanded={expanded}
       on:click={() => {
@@ -47,7 +47,7 @@
     <!-- Links -->
     <div
       class="w-full md:block md:w-auto
-		{expanded ? 'fixed p-3 top-0 left-0 bg-blue-800 h-[100vh]' : 'hidden'}"
+		{expanded ? 'fixed p-3 top-0 left-0 bg-blue-600 h-[100vh] z-50' : 'hidden'}"
       id="navbar-default"
     >
       <!-- Close Hamburger Button -->
@@ -117,9 +117,10 @@
           </a>
         </li>
         <li
-          class="mt-5 md:mt-0 py-1 px-4 bg-white duration-100 hover:bg-blue-200 rounded-full"
+          class="flex mt-5 md:mt-0 py-1 pl-2 pr-3 bg-orange-500 duration-100 hover:bg-orange-400 rounded"
         >
-          <a rel="prefetch" href="/report" class="text-slate-700 md:pl-0">
+        <svg class="w-6 h-6" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+          <a rel="prefetch" href="/report" class="text-white pl-1">
             Report a Price
           </a>
         </li>
