@@ -5,7 +5,7 @@
   import { loadResults } from '$lib/supabase'
 
   const submit = () => {
-    loadResults(searchCategory, option)
+    loadResults(searchCategory, option, area)
   }
 </script>
 

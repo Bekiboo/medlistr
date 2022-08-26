@@ -52,7 +52,7 @@ import { searchResults } from '$lib/supabase'
     <div class="mt-4 flex flex-col">
       {#each results as result}
         <a
-          href="#"
+          href="/health-facility/{result.id}"
           class="block p-6 max-w-sm md:max-w-xl bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 mt-2"
         >
           <h5 class="mb-2 text-xl font-medium tracking-tight">

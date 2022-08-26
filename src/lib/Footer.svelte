@@ -3,7 +3,7 @@
     <div class="md:flex md:justify-between">
         <div class="mb-6 md:mb-0">
             <a href="https://flowbite.com/" class="flex flex-col items-center">
-                <img src="medfindr-logo.png" class="mr-3 h-12" alt="Medlistr Logo">
+                <img src="../medfindr-logo.png" class="mr-3 h-12" alt="Medlistr Logo">
                 <span class="self-center text-xl font-semibold whitespace-nowrap text-white">Provo, UT 84604</span>
             </a>
         </div>

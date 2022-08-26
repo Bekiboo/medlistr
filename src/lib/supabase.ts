@@ -9,22 +9,27 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 export const searchResults: Writable<any[]> = writable([])
 
-export const loadResults = async (searchCategory: string, option: string) => {
+export const loadResults = async (
+  searchCategory: string,
+  option: string,
+  area: string
+) => {
   searchResults.set(['loading'])
-  const { data, error } = await supabase
-    .from(searchCategory)
-    .select('*, health_facility_categories!inner(*), cities!inner(*)')
-    .eq('health_facility_categories.name', option)
-  if (error) return console.error('fetchResults: ', error)
-  searchResults.set(data)
-}
 
-// export const loadResults = async (searchCategory: string, option: string) => {
-//   searchResults.set(['loading'])
-//   const { data, error } = await supabase
-//     .from(searchCategory)
-//     .select('*, cities!inner(*)')
-//     .eq('cities.name', 'Lehi')
-//   if (error) return console.error('fetchResults: ', error)
-//   searchResults.set(data)
-// }
+  if (area) {
+    const { data, error } = await supabase
+      .from(searchCategory)
+      .select('*, health_facility_categories!inner(*), cities!inner(*)')
+      .eq('health_facility_categories.name', option)
+      .eq('cities.name', area)
+    if (error) return console.error('fetchResults: ', error)
+    searchResults.set(data)
+  } else {
+    const { data, error } = await supabase
+      .from(searchCategory)
+      .select('*, health_facility_categories!inner(*), cities!inner(*)')
+      .eq('health_facility_categories.name', option)
+    if (error) return console.error('fetchResults: ', error)
+    searchResults.set(data)
+  }
+}
