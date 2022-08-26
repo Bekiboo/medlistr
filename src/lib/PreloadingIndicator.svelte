@@ -15,7 +15,7 @@
 
 {#if visible}
 	<div class="progress-container">
-		<div class="progress" style="width: {p * 100}%" />
+		<div class="progress bg-orange-500" style="width: {p * 100}%" />
 	</div>
 {/if}
 
@@ -25,7 +25,7 @@
 
 <style>
 	.progress-container {
-		position: absolute;
+		position: fixed;
 		top: 0;
 		left: 0;
 		width: 100%;
@@ -38,7 +38,6 @@
 		left: 0;
 		top: 0;
 		height: 100%;
-		background-color: #5cb85c;
 		transition: width 0.4s;
 	}
 

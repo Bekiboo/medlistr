@@ -9,12 +9,12 @@
   })
 </script>
 
-<nav class="bg-blue-600 border-gray-200 px-2 sm:px-4">
+<nav class="bg-slate-100 border-gray-200 px-2 sm:px-4 shadow-md">
   <div class="container flex flex-wrap justify-between items-center mx-auto">
     <!-- Logo -->
     <a rel="prefetch" href="/" class="flex items-center">
       <img
-        src="white-medListr-logo.png"
+        src="medfindr-logo.png"
         class="mr-3 h-9 my-4 sm:h-9"
         alt="Medlistr Logo"
       />
@@ -47,7 +47,7 @@
     <!-- Links -->
     <div
       class="w-full md:block md:w-auto
-		{expanded ? 'fixed p-3 top-0 left-0 bg-blue-600 h-[100vh] z-50' : 'hidden'}"
+		{expanded ? 'fixed p-3 top-0 left-0 bg-slate-100 h-[100vh] z-50' : 'hidden'}"
       id="navbar-default"
     >
       <!-- Close Hamburger Button -->
@@ -78,7 +78,7 @@
           <a
             rel="prefetch"
             href="/"
-            class="text-white md:pl-0"
+            class="text-venice-blue md:pl-0"
             aria-current={$page.url.pathname === '/' ? 'page' : false}
           >
             Home
@@ -88,7 +88,7 @@
           <a
             rel="prefetch"
             href="/about"
-            class="text-white rounded md:border-0 md:pl-0"
+            class="text-venice-blue rounded md:border-0 md:pl-0"
             aria-current={$page.url.pathname === '/about' ? 'page' : false}
           >
             About
@@ -98,7 +98,7 @@
           <a
             rel="prefetch"
             href="/contact"
-            class="text-white md:pl-0"
+            class="text-venice-blue md:pl-0"
             aria-current={$page.url.pathname === '/contact' ? 'page' : false}
           >
             Contact
@@ -108,7 +108,7 @@
           <a
             rel="prefetch"
             href="/claim-a-listing"
-            class="text-white md:pl-0"
+            class="text-venice-blue md:pl-0"
             aria-current={$page.url.pathname === '/claim-a-listing'
               ? 'page'
               : false}
@@ -136,7 +136,7 @@
     height: 2px;
     left: 0;
     right: 0;
-    background-color: white;
+    background-color: rgb(5 89 137 / var(--tw-text-opacity));
     transform: scale(0, 1);
     transition: transform ease-in-out 50ms;
   }
