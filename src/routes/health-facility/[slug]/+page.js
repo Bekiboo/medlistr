@@ -8,14 +8,15 @@ export async function load({ params }) {
 
   const { data, error } = await supabase
     .from(
-      `health_facilities`
+      `facility`
     )
     .select(
       `*, 
-      health_facility_categories!inner(*), 
-      cities!inner(*)`
+      facility_category!inner(*), 
+      city!inner(*)`
     )
     .eq('id', slug)
-  if (error) throw error(404, 'Not found')
+    console.log(data);
+  if (error) console.log(error)
   return data
 }

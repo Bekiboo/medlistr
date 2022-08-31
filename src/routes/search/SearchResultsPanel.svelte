@@ -1,20 +1,20 @@
 <script lang="ts">
   import PreloadingIndicator from '$lib/PreloadingIndicator.svelte'
-import { searchResults } from '$lib/supabase'
+// import { searchResults } from '$lib/supabase'
 
   let results: any[] = []
 
-  searchResults.subscribe((curr) => (
-    results = curr
-    // console.log(curr)
-    ))
+  // searchResults.subscribe((curr) => (
+  //   results = curr
+  //   // console.log(curr)
+    // ))
 </script>
 
 <div class="flex flex-col w-full">
 
 
   <!-- Search Results -->
-  {#if results == []}
+  {#if results == null}
   <div></div>
   {:else if results[0] == 'loading'}
   <PreloadingIndicator />

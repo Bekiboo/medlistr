@@ -1,11 +1,21 @@
 <script lang="ts">
-  let searchCategory = 'services'
+  import { goto } from '$app/navigation'
+  import { onMount } from 'svelte'
+
+  let category = 'service'
   let option: string
   let area: string
-  import { loadResults } from '$lib/supabase'
+
+  export let searchDetails: any
+
+  onMount(() => {
+    category = searchDetails.category
+    option = searchDetails.option
+    area = searchDetails.area
+  })
 
   const submit = () => {
-    loadResults(searchCategory, option, area)
+    goto(`/search?&category=${category}&option=${option}&area=${area}`)
   }
 </script>
 
@@ -13,38 +23,7 @@
   on:submit|preventDefault={submit}
   class="flex flex-col shadow-xl w-min mx-auto bg-white p-8"
 >
-  <div class="mb-4 flex">
-    <div class="flex items-center mr-4">
-      <input
-        id="search-category-1"
-        type="radio"
-        bind:group={searchCategory}
-        value="services"
-        name="search-category"
-        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
-      />
-      <label
-        for="search-category-1"
-        class="ml-2 text-sm font-medium text-gray-900">Services</label
-      >
-    </div>
-    <div class="flex items-center">
-      <input
-        checked
-        id="search-category-2"
-        type="radio"
-        bind:group={searchCategory}
-        value="health_facilities"
-        name="search-category"
-        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
-      />
-      <label
-        for="search-category-2"
-        class="ml-2 text-sm font-medium text-gray-900">Health Facilities</label
-      >
-    </div>
-  </div>
-
+  <h2>{category}</h2>
   <div class="flex flex-col md:flex-row">
     <label>
       <select
@@ -53,21 +32,19 @@
         class="bg-slate-100 p-3 rounded-l appearance-none w-full md:w-auto mb-2 md:mb-2 md:min-w-[16rem]"
         required
       >
-        {#if searchCategory == 'health_facilities'}
-          <option value="">Choose a Health Facility &#9662;</option>
-          <option value="Hospital">Hospitals</option>
-          <option value="Clinic">Clinics</option>
-          <option value="Imaging Center">Imaging Centers</option>
-          <option value="Vision Center">Vision Centers</option>
-        {/if}
-
-        {#if searchCategory == 'services'}
+        {#if category == 'service'}
           <option value="">Choose a Service &#9662;</option>
           <option value="eyeExams">Eye Exams</option>
           <option value="LASIK">LASIK</option>
           <option value="cataractSurgeries">Cataract Surgeries</option>
           <option value="legJointMRIs">Leg Joint MRIs</option>
           <option value="legMRIs">Leg MRIs</option>
+        {:else if category == 'facility'}
+          <option value="">Choose a Health Facility &#9662;</option>
+          <option value="Hospital">Hospitals</option>
+          <option value="Clinic">Clinics</option>
+          <option value="Imaging Center">Imaging Centers</option>
+          <option value="Vision Center">Vision Centers</option>
         {/if}
       </select>
     </label>
