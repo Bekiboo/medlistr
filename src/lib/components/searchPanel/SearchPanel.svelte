@@ -1,21 +1,33 @@
 <script lang="ts">
   import { goto } from '$app/navigation'
   import { findLocations, listOfLocations } from '$lib/stores/locations'
+  import { onMount } from 'svelte'
   import LocationPicker from './LocationPicker.svelte'
 
   let category = 'service'
   let option: string
   let location: string
 
-  const handleSelectCategory = () => listOfLocations.set([])
-  const handleSelectOption = () => findLocations(category, option)
+  export let searchDetails: any
 
-  const submit = () =>
+  onMount(() => {
+    category = searchDetails.category
+    option = searchDetails.option
+    location = searchDetails.location
+  })
+
+  const handleSelectCategory = () => listOfLocations.set([])
+  const handleSelectOption = () => {
+    listOfLocations.set([])
+    findLocations(category, option)
+  }
+
+  const goToPage = () =>
     goto(`/search?&category=${category}&option=${option}&location=${location}`)
 </script>
 
 <form
-  on:submit|preventDefault={submit}
+  on:submit|preventDefault={goToPage}
   class="flex flex-col shadow-xl w-min mx-auto bg-white p-8 rounded"
 >
   <div class="mb-4 flex">
@@ -75,7 +87,7 @@
         {/if}
       </select>
     </label>
-    <LocationPicker {location} />
+    <LocationPicker bind:location />
   </div>
   <button
     class="-mb-12 mt-4 mx-auto bg-orange-500 hover:bg-orange-400 rounded text-white w-min px-2 py-1"

@@ -1,11 +1,23 @@
 <script lang="ts">
   import { listOfLocations, loadingLocations } from '$lib/stores/locations'
-  export let locationInput: string
 
   let showOptions: boolean = false
+  
+  export let location: string
 
-  let locationList: string[]
-  listOfLocations.subscribe((list) => (locationList = list))
+  let list: string[] = []
+
+  listOfLocations.subscribe((locations) => (list = locations))
+  
+  function filterList(value: string, list: string[]) {
+    if (value) {
+      return list.filter((item) =>
+      item.toLocaleLowerCase().includes(value.toLocaleLowerCase())
+      )
+    } else return list
+  }
+
+  $: filteredList = filterList(location, list)
 
   let loading: boolean
   loadingLocations.subscribe((bool) => (loading = bool))
@@ -35,7 +47,7 @@
     >
   </div>
   <input
-    bind:value={locationInput}
+    bind:value={location}
     on:focus={openOptions}
     on:blur={closeOptions}
     type="search"
@@ -51,17 +63,17 @@
       ? 'block'
       : 'hidden'}"
   >
-    <!-- {#if (locationList.length = 0)}
+    <!-- {#if (list.length = 0)}
       <div class="px-4 py-1">No Result Found</div>
     {/if} -->
     {#if loading}
-      <div class="px-4 py-1">Loading</div>
+      <div class="px-4 py-1">Loading...</div>
     {/if}
-    {#each locationList as listItem}
+    {#each filteredList as listItem}
       <div
         on:click={closeOptionsForReal}
         on:click={() => {
-          locationInput = listItem
+          location = listItem
         }}
         class="hover:bg-orange-200 px-4 py-1 cursor-pointer"
       >

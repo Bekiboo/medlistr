@@ -1,6 +1,7 @@
 <script lang="ts">
 import SearchPanel from "$lib/components/searchPanel/SearchPanel.svelte";
 
+let searchDetails: any = { category: 'service', option: '', location: '' }
 
 </script>
 
@@ -20,5 +21,5 @@ import SearchPanel from "$lib/components/searchPanel/SearchPanel.svelte";
 </div>
 
 <div class="max-w-xl mx-auto">
-  <SearchPanel />
+  <SearchPanel {searchDetails} />
 </div>

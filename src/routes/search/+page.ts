@@ -23,7 +23,7 @@ export const load: PageServerLoad = async ({ params, url }) => {
   async function findFacility() {
     console.log(location);
     
-    if (location != '') {
+    if (location != 'undefined') {
       const { data, error } = await supabase
         .from(category)
         .select(`*, ${category}_category!inner(*), location!inner(*)`)
