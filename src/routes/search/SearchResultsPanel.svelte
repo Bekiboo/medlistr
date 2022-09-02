@@ -2,7 +2,7 @@
   import PreloadingIndicator from '$lib/PreloadingIndicator.svelte'
 // import { searchResults } from '$lib/supabase'
 
-  let results: any[] = []
+  export let results: any[] = []
 
   // searchResults.subscribe((curr) => (
   //   results = curr
@@ -58,7 +58,7 @@
           <h5 class="mb-2 text-xl font-medium tracking-tight">
             {result.name}
           </h5>
-          <p>City: {result.cities.name}</p>
+          <p>City: {result.location.name}</p>
           <p>Rating: {result.rating}</p>
           <p>
             Review Count: {result.nb_of_reviews > 100

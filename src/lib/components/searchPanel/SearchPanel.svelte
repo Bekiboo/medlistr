@@ -10,57 +10,66 @@
 
   export let searchDetails: any
 
+  export let light: boolean = true
+
   onMount(() => {
+    // populate the search fields from previous search
     category = searchDetails.category
     option = searchDetails.option
     location = searchDetails.location
+
+    if (option != '') findLocations(category, option)    
   })
 
+  // Populate list of locations
   const handleSelectCategory = () => listOfLocations.set([])
   const handleSelectOption = () => {
     listOfLocations.set([])
     findLocations(category, option)
   }
 
-  const goToPage = () =>
+  const goToPageDetails = () =>
     goto(`/search?&category=${category}&option=${option}&location=${location}`)
 </script>
 
 <form
-  on:submit|preventDefault={goToPage}
-  class="flex flex-col shadow-xl w-min mx-auto bg-white p-8 rounded"
+  on:submit|preventDefault={goToPageDetails}
+  class="flex flex-col shadow-xl w-min mx-auto bg-white {light ? 'p-3' : 'p-8'} rounded"
 >
-  <div class="mb-4 flex">
-    <div on:change={handleSelectCategory} class="flex items-center mr-4">
-      <input
-        checked
-        id="search-category-1"
-        type="radio"
-        bind:group={category}
-        value="service"
-        name="search-category"
-        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
-      />
-      <label
-        for="search-category-1"
-        class="ml-2 text-sm font-medium text-gray-900">Services</label
-      >
+  {#if !light}
+    <div class="mb-4 flex">
+      <div on:change={handleSelectCategory} class="flex items-center mr-4">
+        <input
+          checked
+          id="search-category-1"
+          type="radio"
+          bind:group={category}
+          value="service"
+          name="search-category"
+          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
+        />
+        <label
+          for="search-category-1"
+          class="ml-2 text-sm font-medium text-gray-900">Services</label
+        >
+      </div>
+      <div class="flex items-center">
+        <input
+          id="search-category-2"
+          type="radio"
+          bind:group={category}
+          value="facility"
+          name="search-category"
+          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
+        />
+        <label
+          for="search-category-2"
+          class="ml-2 text-sm font-medium text-gray-900"
+          >Health Facilities</label
+        >
+      </div>
     </div>
-    <div class="flex items-center">
-      <input
-        id="search-category-2"
-        type="radio"
-        bind:group={category}
-        value="facility"
-        name="search-category"
-        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
-      />
-      <label
-        for="search-category-2"
-        class="ml-2 text-sm font-medium text-gray-900">Health Facilities</label
-      >
-    </div>
-  </div>
+  {/if}
 
   <div class="flex flex-col md:flex-row">
     <label>
@@ -68,7 +77,7 @@
         bind:value={option}
         on:change={handleSelectOption}
         name="type"
-        class="bg-slate-100 p-3 rounded-l appearance-none w-full md:w-auto mb-2 md:mb-2 md:min-w-[16rem]"
+        class="bg-slate-100 p-3 rounded-l appearance-none w-full md:w-auto md:min-w-[16rem] cursor-pointer"
         required
       >
         {#if category == 'service'}
@@ -88,11 +97,17 @@
       </select>
     </label>
     <LocationPicker bind:location />
+    {#if light}
+    <button
+    class="bg-orange-500 hover:bg-orange-400 rounded font-semibold text-white w-min ml-8 px-2 py-1"
+    type="submit">Search</button>
+    {/if}
   </div>
+  {#if !light}
   <button
-    class="-mb-12 mt-4 mx-auto bg-orange-500 hover:bg-orange-400 rounded text-white w-min px-2 py-1"
+    class="-mb-12 mt-4 mx-auto bg-orange-500 hover:bg-orange-400 rounded font-semibold text-white w-min px-2 py-1"
     type="submit">Search</button
-  >
+  >{/if}
 </form>
 
 <!-- <label for="default-toggle" class="inline-flex relative cursor-pointer">

@@ -16,28 +16,31 @@ export const load: PageServerLoad = async ({ params, url }) => {
   let results
 
   if (!category || !option) {
-    throw new Error("Invalid Search Parameters"); 
+    throw new Error('Invalid Search Parameters')
   }
 
-
   async function findFacility() {
-    console.log(location);
-    
-    if (location != 'undefined') {
+    console.log(location)
+
+    if (
+      location == 'undefined' ||
+      location == undefined ||
+      location == null ||
+      !location
+    ) {
       const { data, error } = await supabase
         .from(category)
         .select(`*, ${category}_category!inner(*), location!inner(*)`)
         .eq(`${category}_category.name`, option)
-        .eq(`location.name`, location) //Tester avec location = null
       if (error) return console.error('fetchResults: ', error)
       results = data
       return { searchDetails: { category, option, location }, results }
-  
     } else {
       const { data, error } = await supabase
         .from(category)
         .select(`*, ${category}_category!inner(*), location!inner(*)`)
         .eq(`${category}_category.name`, option)
+        .eq(`location.name`, location) //Tester avec location = null
       if (error) return console.error('fetchResults: ', error)
       results = data
       return { searchDetails: { category, option, location }, results }
@@ -54,7 +57,6 @@ export const load: PageServerLoad = async ({ params, url }) => {
       if (error) return console.error('fetchResults: ', error)
       results = data
       return { searchDetails: { category, option, location }, results }
-  
     } else {
       const { data, error } = await supabase
         .from(category)
@@ -67,5 +69,4 @@ export const load: PageServerLoad = async ({ params, url }) => {
   }
 
   return category == 'facility' ? findFacility() : findService()
-
 }

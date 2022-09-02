@@ -11,12 +11,14 @@ export async function load({ params }) {
       `facility`
     )
     .select(
-      `*, 
-      facility_category!inner(*), 
-      city!inner(*)`
+      `name, rating, nb_of_reviews, img_path, 
+      facility_category!inner(name), 
+      location!inner(name)`
     )
     .eq('id', slug)
-    console.log(data);
+
+  
+  
   if (error) console.log(error)
   return data
 }

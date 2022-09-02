@@ -5,7 +5,7 @@ let searchDetails: any = { category: 'service', option: '', location: '' }
 
 </script>
 
-<div class="max-w-[85ch] mx-auto mb-8">
+<div class="max-w-[85ch] mx-auto my-8">
   <img
     src="mountains.png"
     alt="moutains"
@@ -21,5 +21,5 @@ let searchDetails: any = { category: 'service', option: '', location: '' }
 </div>
 
 <div class="max-w-xl mx-auto">
-  <SearchPanel {searchDetails} />
+  <SearchPanel {searchDetails} light={false} />
 </div>

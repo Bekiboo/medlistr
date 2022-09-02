@@ -12,7 +12,7 @@ import Footer from '$lib/Footer.svelte'
 
 <Nav />
 
-<main class="container mx-auto min-h-[80vh] py-4 md:py-8 px-6">
+<main class="container mx-auto min-h-[80vh] py-4 md:py-4 px-6">
   <slot />
 </main>
 
