@@ -1,5 +1,5 @@
-<script lang="ts">
-  export let data: any[]
+<script>
+  export let data
 
   let facility = data[0]
 </script>

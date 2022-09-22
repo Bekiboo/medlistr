@@ -1,16 +1,17 @@
-<script lang="ts">
+<script>
   import { goto } from '$app/navigation'
   import { findLocations, listOfLocations } from '$lib/stores/locations'
   import { onMount } from 'svelte'
   import LocationPicker from './LocationPicker.svelte'
+  import OptionPicker from './OptionPicker.svelte'
 
   let category = 'service'
-  let option: string
-  let location: string
+  let option
+  let location
 
-  export let searchDetails: any
+  export let searchDetails
 
-  export let light: boolean = true
+  export let light = true
 
   onMount(() => {
     // populate the search fields from previous search
@@ -21,7 +22,7 @@
     if (option != '') findLocations(category, option)    
   })
 
-  // Populate list of locations
+  // Populate/Reset list of locations
   const handleSelectCategory = () => listOfLocations.set([])
   const handleSelectOption = () => {
     listOfLocations.set([])
@@ -72,7 +73,8 @@
   {/if}
 
   <div class="flex flex-col md:flex-row">
-    <label>
+    <OptionPicker bind:option />
+    <!-- <label>
       <select
         bind:value={option}
         on:change={handleSelectOption}
@@ -95,7 +97,7 @@
           <option value="Vision Center">Vision Centers</option>
         {/if}
       </select>
-    </label>
+    </label> -->
     <LocationPicker bind:location />
     {#if light}
     <button
@@ -115,3 +117,38 @@
   <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-orange-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-orange-500"></div>
   <span class="ml-3 text-sm font-medium text-gray-900">Toggle me</span>
 </label> -->
+
+<!-- <button id="multiLevelDropdownButton" data-dropdown-toggle="dropdown" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">Dropdown button <svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button> -->
+<!-- Dropdown menu -->
+<!-- <div id="dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow">
+    <ul class="py-1 text-sm text-gray-70" aria-labelledby="multiLevelDropdownButton">
+      <li>
+        <a href="#" class="block py-2 px-4 hover:bg-gray-100">Dashboard</a>
+      </li>
+      <li>
+        <button id="doubleDropdownButton" data-dropdown-toggle="doubleDropdown" data-dropdown-placement="right-start" type="button" class="flex justify-between items-center py-2 px-4 w-full hover:bg-gray-100">Dropdown<svg aria-hidden="true" class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg></button>
+          <div id="doubleDropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow">
+            <ul class="py-1 text-sm text-gray-70" aria-labelledby="doubleDropdownButton">
+              <li>
+                <a href="#" class="block py-2 px-4 hover:bg-gray-100">Overview</a>
+              </li>
+              <li>
+                <a href="#" class="block py-2 px-4 hover:bg-gray-100">My downloads</a>
+              </li>
+              <li>
+                <a href="#" class="block py-2 px-4 hover:bg-gray-100">Billing</a>
+              </li>
+              <li>
+                <a href="#" class="block py-2 px-4 hover:bg-gray-100">Rewards</a>
+              </li>
+            </ul>
+        </div>
+      </li>
+      <li>
+        <a href="#" class="block py-2 px-4 hover:bg-gray-100">Earnings</a>
+      </li>
+      <li>
+        <a href="#" class="block py-2 px-4 hover:bg-gray-100">Sign out</a>
+      </li>
+    </ul>
+</div> -->

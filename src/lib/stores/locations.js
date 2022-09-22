@@ -1,10 +1,10 @@
 import { supabase } from '$lib/supabase'
-import { writable, type Writable } from 'svelte/store'
+import { writable } from 'svelte/store'
 
-export const listOfLocations: Writable<any[]> = writable([])
-export const loadingLocations: Writable<boolean> = writable()
+export const listOfLocations = writable([])
+export const loadingLocations = writable()
 
-export async function findLocations(category: string, option: string) {
+export async function findLocations(category, option) {
   listOfLocations.set([])
   loadingLocations.set(true)
   const { data, error } = await supabase

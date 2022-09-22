@@ -8,7 +8,7 @@ import { error } from '@sveltejs/kit'
 //   return params.slug
 // }
 
-export const load: PageServerLoad = async ({ params, url }) => {
+export const load = async ({ params, url }) => {
   const category = url.searchParams.get('category')
   const option = url.searchParams.get('option')
   const location = url.searchParams.get('location')

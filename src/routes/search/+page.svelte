@@ -1,10 +1,8 @@
-<script lang="ts">
+<script>
   import SearchPanel from '$lib/components/searchPanel/SearchPanel.svelte'
   import SearchResultsPanel from './SearchResultsPanel.svelte'
 
-  import type { PageData } from './$types'
-
-  export let data: PageData
+  export let data
 
   let searchDetails = data.searchDetails
 </script>

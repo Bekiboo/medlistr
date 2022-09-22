@@ -1,8 +1,8 @@
-<script lang="ts">
+<script>
   import PreloadingIndicator from '$lib/PreloadingIndicator.svelte'
 // import { searchResults } from '$lib/supabase'
 
-  export let results: any[] = []
+  export let results = []
 
   // searchResults.subscribe((curr) => (
   //   results = curr

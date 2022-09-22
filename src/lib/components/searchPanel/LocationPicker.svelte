@@ -1,15 +1,15 @@
-<script lang="ts">
+<script>
   import { listOfLocations, loadingLocations } from '$lib/stores/locations'
 
-  let showOptions: boolean = false
+  let showDropdown = false
   
-  export let location: string
+  export let location
 
-  let list: string[] = []
+  let list = []
 
   listOfLocations.subscribe((locations) => (list = locations))
   
-  function filterList(value: string, list: string[]) {
+  function filterList(value, list) {
     if (value) {
       return list.filter((item) =>
       item.toLocaleLowerCase().includes(value.toLocaleLowerCase())
@@ -19,12 +19,12 @@
 
   $: filteredList = filterList(location, list)
 
-  let loading: boolean
+  let loading
   loadingLocations.subscribe((bool) => (loading = bool))
 
-  const openOptions = () => (showOptions = true)
-  const closeOptions = () => setTimeout(closeOptionsForReal, 250) // needed because on:blur will close the dropdown before an item is selected
-  const closeOptionsForReal = () => (showOptions = false)
+  const openDropdown = () => (showDropdown = true)
+  const closeDropdown = () => setTimeout(closeDropdownForReal, 250) // needed because on:blur will close the dropdown before an item is selected
+  const closeDropdownForReal = () => (showDropdown = false)
 </script>
 
 <label for="default-search" class="sr-only">Search</label>
@@ -48,8 +48,8 @@
   </div>
   <input
     bind:value={location}
-    on:focus={openOptions}
-    on:blur={closeOptions}
+    on:focus={openDropdown}
+    on:blur={closeDropdown}
     type="search"
     id="default-search"
     class="bg-slate-100 p-3 rounded-r appearance-none pl-10 md:border-l-2"
@@ -59,7 +59,7 @@
 
   <!-- Dropdown Select Location Menu -->
   <div
-    class="absolute w-full bg-white mt-2 shadow rounded max-h-60 overflow-y-scroll {showOptions
+    class="absolute w-full bg-white mt-2 shadow rounded max-h-60 overflow-y-scroll {showDropdown
       ? 'block'
       : 'hidden'}"
   >
@@ -71,7 +71,7 @@
     {/if}
     {#each filteredList as listItem}
       <div
-        on:click={closeOptionsForReal}
+        on:click={closeDropdownForReal}
         on:click={() => {
           location = listItem
         }}
