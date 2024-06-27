@@ -1,21 +1,14 @@
 <script>
-  import { clickOutside } from "$lib/helpers/clickOutside"
-
-
-  let showDropdown = false
-
-  export let option
+  export let showCategoryPanel = false
+  export let selectedService
 
   let list = []
 
-  let loading
+  const openDropdown = () => (showCategoryPanel = true)
 
-  const openDropdown = () => (showDropdown = true)
-
-  const closeDropdown = () => setTimeout(closeDropdownForReal, 250) // needed because on:blur will close the dropdown before an item is selected
-  const closeDropdownForReal = () => (showDropdown = false)
+  // const closeDropdown = () => setTimeout(closeDropdownForReal, 250) // needed because on:blur will close the dropdown before an item is selected
+  // const closeDropdownForReal = () => (showCategoryPanel = false)
 </script>
-
 
 <label for="default-search" class="sr-only">Search</label>
 <div class="relative">
@@ -40,15 +33,13 @@
 
   <span
     on:click={openDropdown}
-
-    use:clickOutside
-    on:outclick={() => (showDropdown = false)}
-    
     type="search"
     id="default-search"
-    class="bg-slate-100 p-3 rounded-r pl-10 w-56 cursor-pointer text-gray-500"
+    class="bg-slate-100 p-3 rounded-r pl-10 w-72 sm:w-80 cursor-pointer 
+    {selectedService ? 'text-black' : 'text-gray-500'}"
     placeholder="Choose an option"
-    autocomplete="off">Choose a category</span
+    autocomplete="off"
+    >{selectedService ? selectedService : 'Choose a Category'}</span
   >
   <div
     class="flex absolute inset-y-0 right-0 items-center pl-3 pointer-events-none"
@@ -68,26 +59,25 @@
       />
     </svg>
   </div>
-  <!-- Dropdown Select Option Menu -->
-  <div
-    class="absolute w-full bg-white mt-2 shadow rounded max-h-60 overflow-y-scroll {showDropdown
-      ? 'block'
-      : 'hidden'}"
-  >
-  <div>Prout !</div>
-    {#if loading}
-      <div class="px-4 py-1">Loading...</div>
-    {/if}
-    <!-- {#each filteredList as listItem}
-        <div
-          on:click={closeOptionsForReal}
-          on:click={() => {
-            location = listItem
-          }}
-          class="hover:bg-orange-200 px-4 py-1 cursor-pointer"
-        >
-          {listItem}
-        </div>
-      {/each} -->
-  </div>
 </div>
+
+<!-- Allergy and immunology
+Anesthesiology
+Dermatology
+Diagnostic radiology
+Emergency medicine
+Family medicine
+Internal medicine
+Medical genetics
+Neurology
+Nuclear medicine
+Obstetrics and gynecology
+Ophthalmology
+Pathology
+Pediatrics
+Physical medicine and rehabilitation
+Preventive medicine
+Psychiatry
+Radiation oncology
+Surgery
+Urology -->

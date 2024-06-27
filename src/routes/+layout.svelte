@@ -2,8 +2,8 @@
   import '../app.css' //Tailwind Css
   import { navigating } from '$app/stores'
   import Nav from '$lib/Nav.svelte'
-import PreloadingIndicator from '$lib/PreloadingIndicator.svelte'
-import Footer from '$lib/Footer.svelte'
+  import PreloadingIndicator from '$lib/PreloadingIndicator.svelte'
+  import Footer from '$lib/Footer.svelte'
 </script>
 
 {#if $navigating}

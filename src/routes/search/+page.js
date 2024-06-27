@@ -34,7 +34,7 @@ export const load = async ({ params, url }) => {
         .eq(`${category}_category.name`, option)
       if (error) return console.error('fetchResults: ', error)
       results = data
-      return { searchDetails: { category, option, location }, results }
+      return { searchDetails: { searchType, option, location }, results }
     } else {
       const { data, error } = await supabase
         .from(category)
@@ -43,7 +43,7 @@ export const load = async ({ params, url }) => {
         .eq(`location.name`, location) //Tester avec location = null
       if (error) return console.error('fetchResults: ', error)
       results = data
-      return { searchDetails: { category, option, location }, results }
+      return { searchDetails: { searchType, option, location }, results }
     }
   }
 

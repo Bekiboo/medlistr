@@ -13,85 +13,78 @@ VALUES (
 
 TO_CHAR(ROUND(randomNumber(1111111111,9999999999)),'999-999-9999') AS phone;
 
-CAST(ROUND(randomNumber(0,1))::INTEGER AS BOOLEAN);
+;
 
 INSERT INTO 
-    facility (name, location_id, facility_category_id)
+    service (
+        service_category_id, 
+        facility_id, 
+        option_id, 
+        insurance_id, 
+        min_price, 
+        max_price, 
+        confirmed)
 VALUES
 
-('American Fork Hospital', 6, 3),
-('Lakeview Hospital', 27, 3),
-('Open MRI of Bountiful', 27, 3),
-('Brigham City Community Hospital', 29, 3),
-('Southern Utah MRI', 36, 3),
-('Valley View Medical Center', 36, 3),
-('Delta Community Medical Center', 59, 3),
-('Fillmore Community Medical Center', 91, 3),
-('Gunnison Valley Hospital', 108, 3),
-('Heber Valley Medical Center', 114, 3),
-('Hurricane Valley Clinic', 131, 3),
-('Intermountain Hurricane Clinic', 131, 3),
-('Davis Hospital and Medical Center', 152, 3),
-('Intermountain Layton Health Center', 152, 3),
-('King''s Medical Imaging Layton', 152, 3),
-('Logan Regional Hospital', 161, 3),
-('Women''s Imaging & Mammography Center at Logan Hospital', 161, 3),
-('University of Utah Hospitals & Clinics Greenwood Ctr', 177, 3),
-('Allen Memorial Hospital', 183, 3),
-('Montezuma Creek Health Center', 186, 3),
-('San Juan Hospital- MOBILE', 187, 3),
-('Sanpete Valley Hospital', 190, 3),
-('Intermountain Medical Center', 192, 3),
-('Mountain Medical Imaging', 192, 3),
-('The Orthopedic Specialty Hospital (TOSH)', 192, 3),
-('Central Valley Medical Center', 197, 3),
-('Cache Valley Specialty Hospital', 202, 3),
-('McKay-Dee Hospital', 208, 3),
-('Ogden Clinic', 208, 3),
-('Ogden Regional Hospital', 208, 3),
-('Ogden Regional Medical Center', 208, 3),
-('Orem Community Hospital', 213, 3),
-('Timpanogos Regional Hospital', 213, 3),
-('University of Utah Hospital & Clinics-Parkway Health Center', 213, 3),
-('Utah Valley Imaging', 213, 3),
-('Garfield Memorial Hosp Mobile Mammo Unit MOBILE', 215, 3),
-('Park City Imaging', 218, 3),
-('Redstone Mammography Center', 218, 3),
-('Mountain View Hospital', 220, 3),
-('Mt. Timpanogos Women''s HealthCare', 226, 3),
-('Castleview Hospital', 230, 3),
-('Central Utah Clinic', 232, 3),
-('Utah Valley Regional Medical Center', 232, 3),
-('Sevier Valley Medical Center', 236, 3),
-('Uintah Basin Medical Center', 244, 3),
-('Bryner Clinic', 249, 3),
-('Huntsman Cancer Hospital', 249, 3),
-('Huntsman Comprehensive Breast Care Center', 249, 3),
-('Intermountain Health Care - Salt Lake Clinic', 249, 3),
-('LDS Hospital', 249, 3),
-('Millcreek Imaging Center', 249, 3),
-('Primary Children''s Medical Center', 249, 3),
-('Salt Lake Clinic', 249, 3),
-('Salt Lake Regional Medical Center Breast Care Services', 249, 3),
-('St. Mark''s Hospital', 249, 3),
-('University Of Utah Hospital', 249, 3),
-('Utah Cancer Specialists', 249, 3),
-('Western Neurological Associates', 249, 3),
-('Alta View Hospital', 251, 3),
-('Salt Lake Women''s Center', 251, 3),
-('Wasatch Imaging L.L.C.', 251, 3),
-('Mountain Medical Imaging', 263, 3),
-('Dixie Regional Medical Center', 274, 3),
-('IHC Health Center', 274, 3),
-('Intermountain Southwest Cardiology', 274, 3),
-('King''s Medical Imaging-Redwood', 285, 3),
-('Mountain West Medical Center', 290, 3),
-('Bear River Valley Hospital', 293, 3),
-('Ashley Regional Medical Center', 298, 3),
-('Basin Medical Clinic', 298, 3),
-('Utah Imaging - Ogden', 307, 3),
-('Jordan Valley Medical Center', 313, 3),
-('South Valley Women''s Health Care, P.C.', 313, 3),
-('Copper Canyon Women''s Center', 316, 3),
-('Pioneer Valley Hospital', 316, 3),
-('Utah Imaging West Valley', 316, 3),
+(
+    1, 
+    CAST(ROUND(randomNumber(27,105))::INTEGER AS BOOLEAN), 
+    1, 
+    CAST(ROUND(randomNumber(27,105))::INTEGER AS BOOLEAN), 
+    CAST(ROUND(randomNumber(140,240))::INTEGER AS BOOLEAN), 
+    CAST(ROUND(randomNumber(250,300))::INTEGER AS BOOLEAN), 
+    true),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,5 @@
 <script>
-  import { listOfLocations, loadingLocations } from '$lib/stores/locations'
+  import { locationStore, loadingLocations } from '$lib/stores/locations'
 
   let showDropdown = false
   
@@ -7,7 +7,7 @@
 
   let list = []
 
-  listOfLocations.subscribe((locations) => (list = locations))
+  locationStore.subscribe((locations) => (list = locations))
   
   function filterList(value, list) {
     if (value) {
@@ -52,7 +52,7 @@
     on:blur={closeDropdown}
     type="search"
     id="default-search"
-    class="bg-slate-100 p-3 rounded-r appearance-none pl-10 md:border-l-2"
+    class="bg-slate-100 w-72 sm:w-80 p-3 rounded-r appearance-none pl-10 border-t-2 md:border-t-0 md:border-l-2"
     placeholder="Choose a location"
     autocomplete="off"
   />
